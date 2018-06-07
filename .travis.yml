@@ -30,4 +30,4 @@ script:
 
 branches:
   only:
-    - e2e-testing
+    - master
