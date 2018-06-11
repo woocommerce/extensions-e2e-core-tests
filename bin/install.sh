@@ -17,7 +17,7 @@ WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
 
 CURRENTR_SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-${E2E_FOLDER:='tests'}
+E2E_FOLDER=${E2E_FOLDER:-tests}
 
 #clone woocommerce
 WOOCOMMERCE_LOCATION=$CURRENTR_SCRIPT_FOLDER/../woocommerce
