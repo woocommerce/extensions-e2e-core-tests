@@ -17,6 +17,8 @@ WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
 
 CURRENTR_SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+${E2E_FOLDER:='tests'}
+
 #clone woocommerce
 WOOCOMMERCE_LOCATION=$CURRENTR_SCRIPT_FOLDER/../woocommerce
 if [ ! -d "$WOOCOMMERCE_LOCATION" ]; then
@@ -29,7 +31,7 @@ REPO_E2E=$TRAVIS_REPO_SLUG
 BRANCH_E2E=$TRAVIS_BRANCH
 
 # we need cd because some paths in install.sh are relative and assume this folder
-export TRAVIS_REPO_SLUG="$TRAVIS_REPO_SLUG/tests/woocommerce"
+export TRAVIS_REPO_SLUG="$TRAVIS_REPO_SLUG/$E2E_FOLDER/woocommerce"
 export TRAVIS_PULL_REQUEST_BRANCH="master"
 export TRAVIS_PULL_REQUEST_SLUG="woocommerce/woocommerce"
 

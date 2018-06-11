@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
-cd tests/woocommerce
+
+${E2E_FOLDER:='tests'}
+
+cd '$E2E_FOLDER/woocommerce'
 . tests/bin/run-e2e-CI.sh
