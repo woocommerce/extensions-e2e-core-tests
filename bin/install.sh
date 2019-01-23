@@ -5,6 +5,10 @@ if [ $# -lt 3 ]; then
 	exit 1
 fi
 
+if [[ ${RUN_E2E} != 1 ]]; then
+	exit 0
+fi
+
 DB_NAME=$1
 DB_USER=$2
 DB_PASS=$3
