@@ -27,7 +27,7 @@ E2E_FOLDER=${E2E_FOLDER:-tests}
 WOOCOMMERCE_LOCATION=$CURRENTR_SCRIPT_FOLDER/../woocommerce
 if [ ! -d "$WOOCOMMERCE_LOCATION" ]; then
   mkdir -p $WOOCOMMERCE_LOCATION
-  git clone --depth=50 --branch=master  git@github.com:woocommerce/woocommerce.git $WOOCOMMERCE_LOCATION
+  git clone --depth=50 --branch=master https://github.com/woocommerce/woocommerce.git $WOOCOMMERCE_LOCATION
 fi
 
 # Copy execution variables that identify this plugin
