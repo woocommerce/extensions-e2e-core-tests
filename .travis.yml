@@ -8,25 +8,20 @@ addons:
 
 sudo: false
 
-install:
-  - git clone --branch=master git@github.com:woocommerce/extensions-e2e-core-tests.git /tmp/tests
-  - mkdir -p tests
-  - mv /tmp/tests/composer.json .
-  - mv -v /tmp/tests/* tests/
-
 matrix:
   fast_finish: true
   include:
   - php: 7.2
     env: WP_VERSION=latest WP_MULTISITE=0 RUN_PHPCS=1 RUN_E2E=1 E2E_FOLDER='core_e2e_tests'
 
+install:
+  - bash tests/bin/run-e2e-CI.sh install
+
 before_script:
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - bash "$E2E_FOLDER/bin/install.sh woocommerce_test root '' localhost $WP_VERSION"
-  - bash "$E2E_FOLDER/bin/travis.sh before"
+  - bash tests/bin/run-e2e-CI.sh before
 
 script:
-  - bash tests/bin/run-e2e-CI.sh
+  - bash tests/bin/run-e2e-CI.sh run
 
 branches:
   only:
