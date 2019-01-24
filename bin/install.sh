@@ -38,7 +38,7 @@ BRANCH_E2E=$TRAVIS_BRANCH
 
 # we need cd because some paths in install.sh are relative and assume this folder
 export TRAVIS_REPO_SLUG="$TRAVIS_REPO_SLUG/$E2E_FOLDER/woocommerce"
-export TRAVIS_PULL_REQUEST_BRANCH=$WC_VERSION
+export TRAVIS_PULL_REQUEST_BRANCH="master"
 export TRAVIS_PULL_REQUEST_SLUG="woocommerce/woocommerce"
 
 cd $WOOCOMMERCE_LOCATION
