@@ -1,5 +1,5 @@
 {
-    "name": "woocommerce/woocommerce-extension-testing",
+    "name": "extendables/woocommerce-extension-testing",
     "description": "WooCommerce Extendables Testing framework",
     "type": "phpcodesniffer-standard",
     "license": "GPL-3.0-or-later",
