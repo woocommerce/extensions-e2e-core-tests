@@ -49,7 +49,7 @@ WP_E2E_PLUGINS_FOLDER="$WP_CORE_DIR_E2E/wp-content/plugins"
 
 # clone plugin
 cd "$WP_E2E_PLUGINS_FOLDER"
-git clone --depth=50 --branch=$BRANCH_E2E git@github.com:$REPO_E2E.git
+ls -s $TRAVIS_BUILD_DIR $WP_E2E_PLUGINS_FOLDER
 
 WOOCOMMERCE_PREFIX="woocommerce/"
 
