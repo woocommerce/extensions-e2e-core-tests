@@ -23,11 +23,13 @@ CURRENTR_SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 E2E_FOLDER=${E2E_FOLDER:-tests}
 
+WC_VERSION=${WC_VERSION:-master}
+
 #clone woocommerce
 WOOCOMMERCE_LOCATION=$CURRENTR_SCRIPT_FOLDER/../woocommerce
 if [ ! -d "$WOOCOMMERCE_LOCATION" ]; then
   mkdir -p $WOOCOMMERCE_LOCATION
-  git clone --depth=50 --branch=master https://github.com/woocommerce/woocommerce.git $WOOCOMMERCE_LOCATION
+  git clone --depth=50 --branch=$WC_VERSION https://github.com/woocommerce/woocommerce.git $WOOCOMMERCE_LOCATION
 fi
 
 # Copy execution variables that identify this plugin
@@ -36,7 +38,7 @@ BRANCH_E2E=$TRAVIS_BRANCH
 
 # we need cd because some paths in install.sh are relative and assume this folder
 export TRAVIS_REPO_SLUG="$TRAVIS_REPO_SLUG/$E2E_FOLDER/woocommerce"
-export TRAVIS_PULL_REQUEST_BRANCH="master"
+export TRAVIS_PULL_REQUEST_BRANCH=$WC_VERSION
 export TRAVIS_PULL_REQUEST_SLUG="woocommerce/woocommerce"
 
 cd $WOOCOMMERCE_LOCATION
