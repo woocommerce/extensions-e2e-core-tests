@@ -18,8 +18,9 @@ before_script:
 script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - export NODE_CONFIG='{"users":{"admin":{"username":"admin","password":"password"},"customer":{"username":"customer","password":"password"}}}'
-  - woocommerce/tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
-  - woocommerce/tests/bin/run-e2e-CI.sh
+  - cd woocommerce
+  - tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
+  - tests/bin/run-e2e-CI.sh
 
 branches:
   only:
