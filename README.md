@@ -6,7 +6,7 @@ Shell scripts to run WooCommerce end to end tests in Travis for WooCommerce exte
 Copy `bin/run-e2e-CI.sh` into your tests suite bin folder:
 
 ```
-wget https://raw.githubusercontent.com/woocommerce/extensions-e2e-core-tests/master/bin/run-e2e-CI.sh tests/bin/
+wget https://raw.githubusercontent.com/woocommerce/extensions-e2e-core-tests/master/bin/run-e2e-CI.sh -P tests/bin/
 ```
 
 Update your travis file:
