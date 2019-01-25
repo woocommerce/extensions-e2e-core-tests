@@ -10,23 +10,16 @@ sudo: false
 
 php: 7.2
 
-env: WP_VERSION=latest WP_MULTISITE=0 RUN_E2E=1
-
-before_install:
-  - git clone --depth=50 --branch=master https://github.com/woocommerce/woocommerce.git woocommerce/woocommerce
+env: WP_VERSION=latest WP_MULTISITE=0 RUN_E2E=1 
 
 before_script:
-  - pwd
-  - cd woocommerce/woocommerce
-  - export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-  - bash tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
-  - bash tests/bin/travis.sh before
+  - git clone --depth=50 --branch=master https://github.com/woocommerce/woocommerce.git woocommerce
 
 script:
-  - pwd
-  - bash tests/bin/phpunit.sh
-  - bash tests/bin/phpcs.sh
-  - travis_retry bash tests/bin/run-e2e-CI.sh
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - export NODE_CONFIG='{"users":{"admin":{"username":"admin","password":"password"},"customer":{"username":"customer","password":"password"}}}'
+  - woocommerce/tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
+  - woocommerce/tests/bin/run-e2e-CI.sh
 
 branches:
   only:
