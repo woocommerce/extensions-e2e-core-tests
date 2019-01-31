@@ -35,3 +35,14 @@ before_script:
 script:
   - bash tests/bin/run-e2e-CI.sh run
 ```
+
+
+### Install phpcs ruleset
+
+To add the ruleset globally to phpcs
+
+```
+composer global require extendables/woocommerce-extension-testing:dev-master 
+```
+
+Now it can be used anywhere with `phpcs --standard=Extendables`
