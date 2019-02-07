@@ -16,7 +16,7 @@ CUSTOMER_PASSWORD=${CUSTOMER_PASSWORD:-password}
 
 case $1 in
   install)
-    git clone --branch=e2e-suite git@github.com:woocommerce/extensions-e2e-core-tests.git $E2E_FOLDER
+    git clone --branch=e2e-suite https://github.com/woocommerce/extensions-e2e-core-tests.git $E2E_FOLDER
   ;;
   before)
     export PATH="$HOME/.composer/vendor/bin:$PATH"
