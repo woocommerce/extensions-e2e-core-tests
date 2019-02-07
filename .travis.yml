@@ -8,25 +8,23 @@ addons:
 
 sudo: false
 
-php: 7.2
-
-env: WP_VERSION=latest WP_MULTISITE=0 RUN_E2E=1
+matrix:
+  fast_finish: true
+  include:
+  - php: 7.2
+    env: WP_VERSION=latest WP_MULTISITE=0 RUN_PHPCS=1 RUN_E2E=1 E2E_FOLDER='core_e2e_tests'
 
 before_install:
-  - git clone --depth=50 --branch=master https://github.com/woocommerce/woocommerce.git woocommerce/woocommerce
+  - wget https://raw.githubusercontent.com/woocommerce/extensions-e2e-core-tests/master/bin/run-e2e-CI.sh -P tests/bin/
+
+install:
+  - bash tests/bin/run-e2e-CI.sh install
 
 before_script:
-  - pwd
-  - cd woocommerce/woocommerce
-  - export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-  - bash tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
-  - bash tests/bin/travis.sh before
+  - bash tests/bin/run-e2e-CI.sh before
 
 script:
-  - pwd
-  - bash tests/bin/phpunit.sh
-  - bash tests/bin/phpcs.sh
-  - travis_retry bash tests/bin/run-e2e-CI.sh
+  - bash tests/bin/run-e2e-CI.sh run
 
 branches:
   only:
