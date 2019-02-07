@@ -50,13 +50,9 @@ WP_CORE_DIR_E2E="$HOME/wordpress"
 WP_E2E_PLUGINS_FOLDER="$WP_CORE_DIR_E2E/wp-content/plugins"
 
 # clone plugin
-#cd "$WP_E2E_PLUGINS_FOLDER"
-#ln -s $TRAVIS_BUILD_DIR $WP_E2E_PLUGINS_FOLDER
-
-#WOOCOMMERCE_PREFIX="woocommerce/"
-
-#PLUGIN_NAME=${REPO_E2E#$WOOCOMMERCE_PREFIX}
-
-#cd "$WP_CORE_DIR_E2E"
-#php wp-cli.phar plugin activate $PLUGIN_NAME
+cd "$WP_E2E_PLUGINS_FOLDER"
+$PLUGIN_NAME="woocommerce-bookings"
+git clone --depth=50 --branch=master https://github.com/woocommerce/$PLUGIN_NAME.git $WOOCOMMERCE_LOCATION
+cd "$WP_CORE_DIR_E2E"
+php wp-cli.phar plugin activate $PLUGIN_NAME
 
